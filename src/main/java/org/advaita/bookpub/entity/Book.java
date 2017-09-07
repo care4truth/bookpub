@@ -1,6 +1,7 @@
 package org.advaita.bookpub.entity;
 
 import javax.persistence.*;
+import java.util.List;
 
 /**
  * Created by advaita on 6/17/17.
@@ -19,20 +20,18 @@ public class Book {
     private Author author;
 
     @ManyToOne
-    private Publisher Publisher;
+    private Publisher publisher;
 
     @ManyToMany
     private List<Reviewer> reviewers;
 
+    public Book(String isbn,String title, Author author , Publisher publisher) {
+        this.isbn = isbn;
+        this.title = title;
+        this.author = author;
+        this.publisher = publisher;
 
-    protected Book()
-        public Book(String isbn,String title, Author author , Publisher publisher) {
-            this.isbn = isbn;
-            this.title = title;
-            this.author = author;
-            this.publisher = publisher;
-
-        }
+    }
 
     public Long getId() {
         return id;
@@ -75,11 +74,11 @@ public class Book {
     }
 
     public Publisher getPublisher() {
-        return Publisher;
+        return publisher;
     }
 
     public void setPublisher(Publisher publisher) {
-        Publisher = publisher;
+        this.publisher = publisher;
     }
 
     public List<Reviewer> getReviewers() {

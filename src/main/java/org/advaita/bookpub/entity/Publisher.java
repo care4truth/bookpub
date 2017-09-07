@@ -17,10 +17,12 @@ public class Publisher {
     private Long id;
 
     private String name;
-    @OneToMany(mappedby = "publisher")
+    @OneToMany(mappedBy = "publisher")
     private List<Book> books;
 
-    protected Publisher() {}
+    protected Publisher(List<Book> books) {
+        this.books = books;
+    }
 
     public Publisher(String name) {
         this.name = name;
